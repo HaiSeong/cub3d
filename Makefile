@@ -6,14 +6,14 @@
 #    By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/13 15:19:09 by hajeong          ###   ########.fr        #
+#    Updated: 2023/01/13 17:02:29 by hajeong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS =  -g
 
 INCLUDES_DIR = includes
 LIBS_DIR = libft
@@ -22,15 +22,18 @@ MLX_DIR = mlx
 
 # srcs directory
 PARSING_DIR = parsing
+UTIL_DIR = util
 
-PARSING_SRCS = parsing_map.c
+PARSING_SRCS = parsing_cub_file.c read_file.c parsing_texture_lines.c
+UTIL_SRCS = ft_split_isspace.c
 
 LIBFT_DIR = libft
 LIBFT = libft.a
 LIBFT_LIB = -lft
 
 SRCS = $(addprefix $(SRCS_DIR)/, cub3d.c) \
-	$(addprefix $(SRCS_DIR)/$(PARSING_DIR)/, $(PARSING_SRCS))
+	$(addprefix $(SRCS_DIR)/$(PARSING_DIR)/, $(PARSING_SRCS)) \
+	$(addprefix $(SRCS_DIR)/$(UTIL_DIR)/, $(UTIL_SRCS))
 
 OBJS = $(SRCS:.c=.o)
 

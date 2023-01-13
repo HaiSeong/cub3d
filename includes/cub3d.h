@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 15:17:59 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/13 17:13:37 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,24 @@
 # define KEY_S			1
 # define KEY_D			2
 
+struct s_game
+{
+	char	*cub_file;
+	char	*texture_no;
+	char	*texture_so;
+	char	*texture_we;
+	char	*texture_ea;
+
+};
+typedef struct s_game t_game;
+
+// parsing
+void	parsing_cub_file(t_game *game);
+int		read_file(char *file);
+void	parsing_texture_lines(t_game *game, int fd);
+
+
+// util
+char	**ft_split_isspace(char const *s);
 
 #endif
