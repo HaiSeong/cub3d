@@ -6,40 +6,53 @@
 #    By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/13 14:57:18 by hajeong          ###   ########.fr        #
+#    Updated: 2023/01/13 15:19:09 by hajeong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3d
-LIBFT		= libft
-MLX			= mlx
+NAME = cub3d
 
-SRCS =	cub3d.c\
-		# parsing_map.c
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
 
-OBJS		= $(SRCS:%.c=%.o)
+INCLUDES_DIR = includes
+LIBS_DIR = libft
+SRCS_DIR = srcs
+MLX_DIR = mlx
 
-FLAGS		= -Wall -Wextra -Werror
+# srcs directory
+PARSING_DIR = parsing
 
-all			:	$(NAME)
+PARSING_SRCS = parsing_map.c
 
-$(NAME)		:	$(OBJS)
-		make all -C $(LIBFT)/
-		make all -C $(MLX)/
-		cc -o $(NAME) $(OBJS) -L ./libft -l ft -L ./mlx -l mlx -framework OpenGL -framework AppKit
+LIBFT_DIR = libft
+LIBFT = libft.a
+LIBFT_LIB = -lft
 
-%.o			:	%.c
-		cc $(FLAGS) -c $^ -o $@
+SRCS = $(addprefix $(SRCS_DIR)/, cub3d.c) \
+	$(addprefix $(SRCS_DIR)/$(PARSING_DIR)/, $(PARSING_SRCS))
 
+OBJS = $(SRCS:.c=.o)
 
-clean		:
-		rm -f $(OBJS)
-		make clean -C $(LIBFT)
+all : $(NAME)
 
-fclean		:	clean
-		rm -f $(NAME)
-		make fclean -C $(LIBFT)
+$(NAME) : $(OBJS)
+	make -C $(LIBFT_DIR) bonus
+	$(CC) $(CFLAGS) $(OBJS) -I $(INCLUDES_DIR) -L $(LIBFT_DIR) $(LIBFT_LIB) -o $@
+	
+%.o : %.c
+	$(CC) $(CFLAGS) -I $(INCLUDES_DIR) -c $< -o $@
 
-re			:	fclean all
+clean :
+	rm -rf $(OBJS)
+	make -C $(LIBFT_DIR) clean
 
-.PHONY		:	all clean fclean re
+fclean : clean
+	rm -rf $(NAME)
+	make -C $(LIBFT_DIR) fclean
+
+re :
+	make fclean
+	make all
+
+.PHONY = all clean fclean re
