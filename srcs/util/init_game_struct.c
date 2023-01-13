@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   init_game_struct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 17:44:45 by hajeong          ###   ########.fr       */
+/*   Created: 2023/01/13 17:42:45 by hajeong           #+#    #+#             */
+/*   Updated: 2023/01/13 17:47:19 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main()
+void	init_game_struct(t_game *game)
 {
-	t_game game;
-
-	// init_game_struct(&game);
-	parsing_cub_file(&game);
-	ft_printf("texture_no : %s\n", game.texture_no);
-	ft_printf("texture_so : %s\n", game.texture_so);
-	ft_printf("texture_we : %s\n", game.texture_we);
-	ft_printf("texture_ea : %s\n", game.texture_ea);
+	game->texture_no = NULL;
+	game->texture_so = NULL;
+	game->texture_we = NULL;
+	game->texture_ea = NULL;
 }

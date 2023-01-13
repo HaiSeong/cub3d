@@ -6,7 +6,7 @@
 #    By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/13 17:02:29 by hajeong          ###   ########.fr        #
+#    Updated: 2023/01/13 17:47:43 by hajeong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ PARSING_DIR = parsing
 UTIL_DIR = util
 
 PARSING_SRCS = parsing_cub_file.c read_file.c parsing_texture_lines.c
-UTIL_SRCS = ft_split_isspace.c
+UTIL_SRCS = ft_split_isspace.c init_game_struct.c
 
 LIBFT_DIR = libft
 LIBFT = libft.a

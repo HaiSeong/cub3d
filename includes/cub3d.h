@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 17:13:37 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/13 17:46:55 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 
 struct s_game
 {
-	char	*cub_file;
 	char	*texture_no;
 	char	*texture_so;
 	char	*texture_we;
@@ -45,6 +44,7 @@ void	parsing_texture_lines(t_game *game, int fd);
 
 
 // util
+void	init_game_struct(t_game *game);
 char	**ft_split_isspace(char const *s);
 
 #endif
