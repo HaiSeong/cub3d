@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game_struct.c                                 :+:      :+:    :+:   */
+/*   free_strs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 17:42:45 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 18:35:44 by hajeong          ###   ########.fr       */
+/*   Created: 2023/01/13 18:14:39 by hajeong           #+#    #+#             */
+/*   Updated: 2023/01/13 18:15:07 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_game_struct(t_game *game)
+void	ft_free_strs(char **strs)
 {
-	int i;
+	int	i;
 
-	game->texture_no = NULL;
-	game->texture_so = NULL;
-	game->texture_we = NULL;
-	game->texture_ea = NULL;
-	game->F = (int *)malloc(sizeof(int) * 3);
-	game->C = (int *)malloc(sizeof(int) * 3);
-	if (game->F == NULL || game->C == NULL)
-		//error ;
 	i = 0;
-	while (i < 3)
-	{
-		game->F[i] = -1;
-		game->C[i] = -1;
-		i++;
-	}
-		
+	while (strs[i] != NULL)
+		free(strs[i++]);
+	free(strs);
 }

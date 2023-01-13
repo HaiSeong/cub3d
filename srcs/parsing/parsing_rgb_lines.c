@@ -1,40 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_texture_lines.c                            :+:      :+:    :+:   */
+/*   parsing_rgb_lines.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 18:38:24 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:37:58 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	assign_texture_by_key(t_game *game, char **field, \
+static void	assign_rgb_by_key(t_game *game, int *field, \
 char *key, char *value)
 {
-	if (*field != NULL)
+	char	**strs;
+	int		i;
+	
+	if (field[0] >= 0 || field[1] >= 0 || field[2] >= 0)
 		; // error
-	*field = value;
+	strs = ft_split(value, ',');
+	if (strs == NULL)
+		;// error
+	if (strs[3] != NULL)
+		exit(0);// error + ~~~~
+	i = 0;
+	while (i < 3)
+	{
+		field[i] = atoi(strs[i]);
+		i++;
+	}
 }
 
-static void	assign_texture(t_game *game, char *key, char *value)
+static void	assign_rgb(t_game *game, char *key, char *value)
 {
-	if (ft_strcmp(key, "NO") == 0)
-		assign_texture_by_key(game, &(game->texture_no), key, value);
-	else if (ft_strcmp(key, "SO") == 0)
-		assign_texture_by_key(game, &(game->texture_so), key, value);
-	else if (ft_strcmp(key, "WE") == 0)
-		assign_texture_by_key(game, &(game->texture_we), key, value);
-	else if (ft_strcmp(key, "EA") == 0)
-		assign_texture_by_key(game, &(game->texture_ea), key, value);
+	if (ft_strcmp(key, "F") == 0)
+		assign_rgb_by_key(game, game->F, key, value);
+	else if (ft_strcmp(key, "C") == 0)
+		assign_rgb_by_key(game, game->C, key, value);
 	else
 		;//error
 }
 
-void	parsing_texture_lines(t_game *game, int fd)
+void	parsing_rgb_lines(t_game *game, int fd)
 {
 	char	*line;
 	char	**strs;
@@ -48,14 +57,13 @@ void	parsing_texture_lines(t_game *game, int fd)
 		if (strs == NULL)
 			;// error
 		if (strs[2] != NULL)
-			exit(0);// error + free strs
-		assign_texture(game, strs[0], strs[1]);
-		free(strs[0]);
-		free(strs);
+			;// error + free strs
+		assign_rgb(game, strs[0], strs[1]);
+		ft_free_strs(strs);
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (game->texture_no == NULL || game->texture_so == NULL \
-		|| game->texture_we == NULL || game->texture_ea == NULL)
+	if (game->F[0] < 0 || game->F[1] < 0 || game->F[2] < 0 || \
+		game->C[0] < 0 || game->C[1] < 0 || game->C[2] < 0)
 		;// error
 }
