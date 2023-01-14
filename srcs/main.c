@@ -11,11 +11,6 @@ int main(int argc, char *argv[])
 	ft_printf("texture_so : %s\n", game.texture_so);
 	ft_printf("texture_we : %s\n", game.texture_we);
 	ft_printf("texture_ea : %s\n", game.texture_ea);
-	ft_printf("F :");
-	for (int i = 0 ; i< 3; i++)
-		ft_printf(" %d,", game.F[i]);
-	ft_printf("C :");
-	for (int i = 0 ; i< 3; i++)
-		ft_printf(" %d,", game.C[i]);
-	
+	ft_printf("F : %X\n", game.F_hex);
+	ft_printf("C : %X\n", game.C_hex);
 }

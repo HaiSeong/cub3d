@@ -35,6 +35,8 @@ struct s_game
 	char	*texture_ea;
 	int		*F;
 	int		*C;
+	int		F_hex;
+	int		C_hex;
 	int		height;
 	int		width;
 	char	**map;
@@ -47,6 +49,8 @@ int		read_file(char *file);
 void	parsing_texture_lines(t_game *game, int fd);
 void	parsing_rgb_lines(t_game *game, int fd);
 void	parsing_map_lines(t_game *game, int fd);
+void	validate_texture_lines(t_game *game);
+void	validate_rgb_lines(t_game *game);
 
 
 // util
