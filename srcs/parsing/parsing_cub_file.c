@@ -21,6 +21,7 @@ void parsing_cub_file(t_game *game, char *file)
 		ft_error(game, "failed to open .cub file");
 	parsing_texture_lines(game, fd);
 	parsing_rgb_lines(game, fd);
+	parsing_map_lines(game, fd);
 	
 	close(fd);
 }

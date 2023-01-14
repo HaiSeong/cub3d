@@ -24,7 +24,7 @@ MLX_DIR = mlx
 PARSING_DIR = parsing
 UTIL_DIR = util
 
-PARSING_SRCS = parsing_cub_file.c read_file.c parsing_texture_lines.c parsing_rgb_lines.c
+PARSING_SRCS = parsing_cub_file.c read_file.c parsing_texture_lines.c parsing_rgb_lines.c parsing_map_lines.c
 UTIL_SRCS = ft_split_isspace.c init_game_struct.c ft_free_strs.c ft_free_game.c ft_error.c validate_arg.c
 
 LIBFT_DIR = libft

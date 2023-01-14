@@ -14,4 +14,7 @@ void	ft_free_game(t_game *game)
 		free(game->F);
 	if (game->C != NULL)
 		free(game->C);
+	if (game->map != NULL)
+		ft_free_strs(game->map);
+	
 }

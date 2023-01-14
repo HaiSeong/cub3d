@@ -35,6 +35,9 @@ struct s_game
 	char	*texture_ea;
 	int		*F;
 	int		*C;
+	int		height;
+	int		width;
+	char	**map;
 };
 typedef struct s_game t_game;
 
@@ -43,6 +46,7 @@ void	parsing_cub_file(t_game *game, char *file);
 int		read_file(char *file);
 void	parsing_texture_lines(t_game *game, int fd);
 void	parsing_rgb_lines(t_game *game, int fd);
+void	parsing_map_lines(t_game *game, int fd);
 
 
 // util
