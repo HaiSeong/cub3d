@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static int	ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if (c == ' ')
 		return (1);

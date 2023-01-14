@@ -25,6 +25,7 @@ void parsing_cub_file(t_game *game, char *file)
 	parsing_rgb_lines(game, fd);
 	validate_rgb_lines(game);
 	parsing_map_lines(game, fd);
+	check_needless_lines(game, fd);
 	validate_map(game);
 	system("leaks --list cub3d");
 	close(fd);

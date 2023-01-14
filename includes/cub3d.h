@@ -53,10 +53,11 @@ void	parsing_map_lines(t_game *game, int fd);
 void	validate_texture_lines(t_game *game);
 void	validate_rgb_lines(t_game *game);
 void	validate_map(t_game *game);
-
+void	check_needless_lines(t_game *game, int fd);
 
 // util
 void	init_game_struct(t_game *game);
+int		ft_isspace(char c);
 char	**ft_split_isspace(char const *s);
 void	ft_free_strs(char **strs);
 void	ft_free_game(t_game *game);
