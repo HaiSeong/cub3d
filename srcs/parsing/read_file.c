@@ -14,13 +14,10 @@
 
 int	read_file(char *file)
 {
-int fd;
+	int fd;
 
-	fd = open("1.cub", O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("System error, reboot game");
 		return (-1);
-	}
 	return (fd);
 }

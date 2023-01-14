@@ -39,7 +39,7 @@ struct s_game
 typedef struct s_game t_game;
 
 // parsing
-void	parsing_cub_file(t_game *game);
+void	parsing_cub_file(t_game *game, char *file);
 int		read_file(char *file);
 void	parsing_texture_lines(t_game *game, int fd);
 void	parsing_rgb_lines(t_game *game, int fd);
@@ -51,5 +51,6 @@ char	**ft_split_isspace(char const *s);
 void	ft_free_strs(char **strs);
 void	ft_free_game(t_game *game);
 void	ft_error(t_game *game, char *msg);
+void	validate_arg(t_game *game, int argc, char *argv[]);
 
 #endif

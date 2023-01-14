@@ -12,11 +12,13 @@
 
 #include "cub3d.h"
 
-void parsing_cub_file(t_game *game)
+void parsing_cub_file(t_game *game, char *file)
 {
 	int		fd;
 
-	fd = read_file("1.cub");
+	fd = read_file(file);
+	if (fd < 0)
+		ft_error(game, "failed to open .cub file");
 	parsing_texture_lines(game, fd);
 	parsing_rgb_lines(game, fd);
 	

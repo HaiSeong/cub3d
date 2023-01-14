@@ -25,13 +25,13 @@ PARSING_DIR = parsing
 UTIL_DIR = util
 
 PARSING_SRCS = parsing_cub_file.c read_file.c parsing_texture_lines.c parsing_rgb_lines.c
-UTIL_SRCS = ft_split_isspace.c init_game_struct.c free_strs.c ft_free_game.c ft_error.c
+UTIL_SRCS = ft_split_isspace.c init_game_struct.c ft_free_strs.c ft_free_game.c ft_error.c validate_arg.c
 
 LIBFT_DIR = libft
 LIBFT = libft.a
 LIBFT_LIB = -lft
 
-SRCS = $(addprefix $(SRCS_DIR)/, cub3d.c) \
+SRCS = $(addprefix $(SRCS_DIR)/, main.c) \
 	$(addprefix $(SRCS_DIR)/$(PARSING_DIR)/, $(PARSING_SRCS)) \
 	$(addprefix $(SRCS_DIR)/$(UTIL_DIR)/, $(UTIL_SRCS))
 
