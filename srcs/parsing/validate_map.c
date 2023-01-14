@@ -28,15 +28,15 @@ static void	validate_row(t_game *game, int row)
 	int	i;
 
 	i = 0;
-	while (game->map[row][i] != '\0')
+	while (i < game->width)
 	{
-		while (game->map[row][i] != '\0' && game->map[row][i] == ' ')
+		while (i < game->width && game->map[row][i] == ' ')
 			i++;
 		if (game->map[row][i] == '\0')
 			break ;
 		if (game->map[row][i] != '1')
 			ft_error(game, "map is not walled around");
-		while (game->map[row][i] != '\0' && game->map[row][i] != ' ')
+		while (i < game->width && game->map[row][i] != ' ')
 			i++;
 		if (game->map[row][i - 1] != '1')
 			ft_error(game, "map is not walled around");
@@ -72,7 +72,7 @@ static void	validate_map_wall(t_game *game)
 		validate_row(game, i);
 		
 	i = -1;
-	while (++i < game->width - 1)
+	while (++i < game->width)
 		validate_column(game, i);
 	
 }
