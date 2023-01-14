@@ -23,13 +23,12 @@ void	init_game_struct(t_game *game)
 	game->F = (int *)malloc(sizeof(int) * 3);
 	game->C = (int *)malloc(sizeof(int) * 3);
 	if (game->F == NULL || game->C == NULL)
-		//error ;
-	i = 0;
-	while (i < 3)
+		ft_error(game, "malloc error");
+	i = -1;
+	while (++i < 3)
 	{
 		game->F[i] = -1;
 		game->C[i] = -1;
-		i++;
 	}
 		
 }

@@ -25,7 +25,7 @@ PARSING_DIR = parsing
 UTIL_DIR = util
 
 PARSING_SRCS = parsing_cub_file.c read_file.c parsing_texture_lines.c parsing_rgb_lines.c
-UTIL_SRCS = ft_split_isspace.c init_game_struct.c free_strs.c
+UTIL_SRCS = ft_split_isspace.c init_game_struct.c free_strs.c ft_free_game.c ft_error.c
 
 LIBFT_DIR = libft
 LIBFT = libft.a

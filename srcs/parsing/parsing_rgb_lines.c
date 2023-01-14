@@ -19,18 +19,23 @@ char *key, char *value)
 	int		i;
 	
 	if (field[0] >= 0 || field[1] >= 0 || field[2] >= 0)
-		; // error
+		ft_error(game, "rgb property is duplicated defined"); // error
+	i = -1;
+	while (value[++i] != '\0')
+		if (!ft_isdigit(value[i]) && value[i] != ',')
+			ft_error(game, "rgb property contains strange characters"); //error
 	strs = ft_split(value, ',');
 	if (strs == NULL)
-		;// error
-	if (strs[3] != NULL)
-		exit(0);// error + ~~~~
-	i = 0;
-	while (i < 3)
+		ft_error(game, "malloc error");// error
+	if (strs[3] != NULL || !strs[0] || !strs[1] || !strs[2]) 
 	{
-		field[i] = atoi(strs[i]);
-		i++;
+		ft_free_strs(strs);
+		ft_error(game, "rgb property must have 3 numbers");// error + ~~~~
 	}
+	i = -1;
+	while (++i < 3)
+		field[i] = atoi(strs[i]);
+	ft_free_strs(strs);
 }
 
 static void	assign_rgb(t_game *game, char *key, char *value)
@@ -40,7 +45,7 @@ static void	assign_rgb(t_game *game, char *key, char *value)
 	else if (ft_strcmp(key, "C") == 0)
 		assign_rgb_by_key(game, game->C, key, value);
 	else
-		;//error
+		ft_error(game, "");//error
 }
 
 void	parsing_rgb_lines(t_game *game, int fd)
@@ -49,15 +54,19 @@ void	parsing_rgb_lines(t_game *game, int fd)
 	char	**strs;
 
 	line = "\n";
-	while (ft_strcmp(line, "\n") == 0)
+	while (line != NULL && ft_strcmp(line, "\n") == 0)
 		line = get_next_line(fd);
-	while (ft_strcmp(line, "\n") != 0)
+	while (line != NULL && ft_strcmp(line, "\n") != 0)
 	{
 		strs = ft_split_isspace(line);
 		if (strs == NULL)
-			;// error
-		if (strs[2] != NULL)
-			;// error + free strs
+			ft_error(game, "malloc error");// error
+		if (strs[2] != NULL || !strs[0] || !strs[1])
+		{
+			ft_free_strs(strs);
+			free(line);
+			ft_error(game, "rgb property must have 2 fields");// error + free strs
+		}
 		assign_rgb(game, strs[0], strs[1]);
 		ft_free_strs(strs);
 		free(line);
@@ -65,5 +74,5 @@ void	parsing_rgb_lines(t_game *game, int fd)
 	}
 	if (game->F[0] < 0 || game->F[1] < 0 || game->F[2] < 0 || \
 		game->C[0] < 0 || game->C[1] < 0 || game->C[2] < 0)
-		;// error
+		ft_error(game, "need more imformation about rgb property");// error
 }

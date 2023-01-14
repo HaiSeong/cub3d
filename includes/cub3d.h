@@ -12,7 +12,7 @@
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# include "mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -49,5 +49,7 @@ void	parsing_rgb_lines(t_game *game, int fd);
 void	init_game_struct(t_game *game);
 char	**ft_split_isspace(char const *s);
 void	ft_free_strs(char **strs);
+void	ft_free_game(t_game *game);
+void	ft_error(t_game *game, char *msg);
 
 #endif
