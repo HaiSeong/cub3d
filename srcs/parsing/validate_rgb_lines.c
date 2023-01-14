@@ -28,4 +28,6 @@ void	validate_rgb_lines(t_game *game)
 	game->C_hex = arr_to_hex(game->C);
 	free(game->F);
 	free(game->C);
+	game->F = NULL;
+	game->C = NULL;
 }

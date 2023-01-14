@@ -9,8 +9,13 @@ static int	get_width(t_list *map_ll)
 	node = map_ll;
 	while (node != NULL)
 	{
-		if (max_width < ft_strlen(node->content))
-			max_width = ft_strlen(node->content);
+		if (!ft_strchr(node->content, '\n'))
+		{
+			if (max_width < ft_strlen(node->content))
+				max_width = ft_strlen(node->content);
+		}
+		else if (max_width < ft_strlen(node->content) - 1)
+			max_width = ft_strlen(node->content) - 1;
 		node = node->next;
 	}
 	return (max_width);
@@ -35,9 +40,10 @@ static char	**init_2d_arr(int height, int width)
 			free(arr);
 			return (NULL);
 		}
-		ft_memset(arr[i], ' ', width - 1);
-		arr[i][width - 1] = '\0';
+		ft_memset(arr[i], ' ', width);
+		arr[i][width] = '\0';
 	}
+	arr[height] = NULL;
 	return (arr);
 }
 
@@ -61,8 +67,8 @@ static void	linkedlist_to_arr(t_game *game, t_list **map_ll)
 	while (node != NULL)
 	{
 		j = -1;
-		while (((char *)node->content)[++j] != '\n' && ((char *)node->content)[j] != '\0')
-			game->map[i][j] = ((char *)node->content)[j];
+		while (node->content[++j] != '\n' && node->content[j] != '\0')
+			game->map[i][j] = node->content[j];
 		i++;
 		node = node->next;
 	}
@@ -71,25 +77,25 @@ static void	linkedlist_to_arr(t_game *game, t_list **map_ll)
 
 void	parsing_map_lines(t_game *game, int fd)
 {
-	char	*line;
 	t_list	*map_ll;
 	t_list	*node;
 
 	map_ll = NULL;
-	line = "\n";
-	while (line != NULL && ft_strcmp(line, "\n") == 0)
-		line = get_next_line(fd);
-	while (line != NULL && ft_strcmp(line, "\n") != 0)
+	while (game->line != NULL && ft_strcmp(game->line, "\n") == 0)
 	{
-		node = ft_lstnew(line);
+		free(game->line);
+		game->line = get_next_line(fd);
+	}
+	while (game->line != NULL && ft_strcmp(game->line, "\n") != 0)
+	{
+		node = ft_lstnew(game->line);
 		if (node == NULL)
 		{
-			free(line);
 			ft_lstclear(&map_ll, free);
 			ft_error(game, "malloc error");
 		}
 		ft_lstadd_back(&map_ll, node);
-		line = get_next_line(fd);
+		game->line = get_next_line(fd);
 	}
 	if (map_ll == NULL)
 		ft_error(game, "empty map lines");

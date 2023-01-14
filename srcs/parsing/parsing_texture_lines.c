@@ -12,6 +12,12 @@
 
 #include "cub3d.h"
 
+static void ft_error_wrong_field_number(t_game *game, char **strs)
+{
+	ft_free_strs(strs);
+	ft_error(game, "texture property must have 2 fields");// error + free strs
+}
+
 static void	assign_texture_by_key(t_game *game, char **field, \
 char *key, char *value)
 {
@@ -36,28 +42,26 @@ static void	assign_texture(t_game *game, char *key, char *value)
 
 void	parsing_texture_lines(t_game *game, int fd)
 {
-	char	*line;
 	char	**strs;
 
-	line = "\n";
-	while (line != NULL && ft_strcmp(line, "\n") == 0)
-		line = get_next_line(fd);
-	while (line != NULL && ft_strcmp(line, "\n") != 0)
+	game->line = ft_strdup("\n");
+	while (game->line != NULL && ft_strcmp(game->line, "\n") == 0)
 	{
-		strs = ft_split_isspace(line);
+		free(game->line);
+		game->line = get_next_line(fd);
+	}
+	while (game->line != NULL && ft_strcmp(game->line, "\n") != 0)
+	{
+		strs = ft_split_isspace(game->line);
 		if (strs == NULL)
 			ft_error(game, "malloc error");// error
 		if (strs[2] != NULL || !strs[0]|| !strs[1])
-		{
-			free(strs);
-			free(line);
-			ft_error(game, "texture property must have 2 fields");// error + free strs
-		}
+			ft_error_wrong_field_number(game, strs);
 		assign_texture(game, strs[0], strs[1]);
 		free(strs[0]);
 		free(strs);
-		free(line);
-		line = get_next_line(fd);
+		free(game->line);
+		game->line = get_next_line(fd);
 	}
 	if (game->texture_no == NULL || game->texture_so == NULL \
 		|| game->texture_we == NULL || game->texture_ea == NULL)

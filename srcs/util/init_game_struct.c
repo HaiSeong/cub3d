@@ -16,6 +16,8 @@ void	init_game_struct(t_game *game)
 {
 	int i;
 
+	game->line = NULL;
+	game->map = NULL;
 	game->texture_no = NULL;
 	game->texture_so = NULL;
 	game->texture_we = NULL;
@@ -30,5 +32,4 @@ void	init_game_struct(t_game *game)
 		game->F[i] = -1;
 		game->C[i] = -1;
 	}
-		
 }

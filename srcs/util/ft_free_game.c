@@ -2,6 +2,8 @@
 
 void	ft_free_game(t_game *game)
 {
+	if (game->line != NULL)
+		free(game->line);
 	if (game->texture_no != NULL)
 		free(game->texture_no);
 	if (game->texture_so != NULL)

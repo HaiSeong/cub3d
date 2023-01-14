@@ -50,27 +50,27 @@ static void	assign_rgb(t_game *game, char *key, char *value)
 
 void	parsing_rgb_lines(t_game *game, int fd)
 {
-	char	*line;
 	char	**strs;
 
-	line = "\n";
-	while (line != NULL && ft_strcmp(line, "\n") == 0)
-		line = get_next_line(fd);
-	while (line != NULL && ft_strcmp(line, "\n") != 0)
+	while (game->line != NULL && ft_strcmp(game->line, "\n") == 0)
 	{
-		strs = ft_split_isspace(line);
+		free(game->line);
+		game->line = get_next_line(fd);
+	}
+	while (game->line != NULL && ft_strcmp(game->line, "\n") != 0)
+	{
+		strs = ft_split_isspace(game->line);
 		if (strs == NULL)
 			ft_error(game, "malloc error");// error
 		if (strs[2] != NULL || !strs[0] || !strs[1])
 		{
 			ft_free_strs(strs);
-			free(line);
 			ft_error(game, "rgb property must have 2 fields");// error + free strs
 		}
 		assign_rgb(game, strs[0], strs[1]);
 		ft_free_strs(strs);
-		free(line);
-		line = get_next_line(fd);
+		free(game->line);
+		game->line = get_next_line(fd);
 	}
 	if (game->F[0] < 0 || game->F[1] < 0 || game->F[2] < 0 || \
 		game->C[0] < 0 || game->C[1] < 0 || game->C[2] < 0)

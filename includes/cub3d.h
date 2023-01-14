@@ -29,6 +29,7 @@
 
 struct s_game
 {
+	char	*line;
 	char	*texture_no;
 	char	*texture_so;
 	char	*texture_we;
@@ -51,6 +52,7 @@ void	parsing_rgb_lines(t_game *game, int fd);
 void	parsing_map_lines(t_game *game, int fd);
 void	validate_texture_lines(t_game *game);
 void	validate_rgb_lines(t_game *game);
+void	validate_map(t_game *game);
 
 
 // util
