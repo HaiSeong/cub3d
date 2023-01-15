@@ -19,6 +19,8 @@ static void	validate_map_char(t_game *game)
 				cnt++;
 		}
 	}
+	if (cnt < 1)
+		ft_error(game, "no start position");
 	if (cnt > 1)
 		ft_error(game, "too many start position");
 }
