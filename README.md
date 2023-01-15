@@ -1,3 +1,4 @@
 # cub3d
 
-[파싱가이드](https://kirkim.github.io/42seoul/2021/07/05/map_parsing.html)
+[레이케스팅 블로그 정리](https://blog.chichoon.com/421)
+[레이케스팅 영어 강좌](https://lodev.org/cgtutor/raycasting.html)
