@@ -118,9 +118,6 @@ void	raycasting(t_game *game);
 void	calculate_ray_values(t_game *game, t_ray *ray, int x);
 void	dda(t_game *game, t_ray *ray);
 void	calculate_perp_wall_dist(t_game *game, t_ray *ray);
-
-// draw
-void	draw_screen(t_game *game, t_ray *ray);
 void	set_floor(t_game *game);
 void	set_ceil(t_game *game);
 

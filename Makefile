@@ -25,7 +25,6 @@ MLX_DIR = mlx
 PARSING_DIR = parsing
 UTIL_DIR = util
 RAY_DIR = raycast
-DRAW_DIR = draw
 
 PARSING_SRCS =	parsing_cub_file.c read_file.c parsing_texture_lines.c \
 				parsing_rgb_lines.c parsing_map_lines.c validate_texture_lines.c \
@@ -34,9 +33,8 @@ PARSING_SRCS =	parsing_cub_file.c read_file.c parsing_texture_lines.c \
 UTIL_SRCS =		ft_split_isspace.c init_game_struct.c ft_free_strs.c ft_free_game.c \
 				ft_error.c validate_arg.c
 
-RAY_SRCS =		raycasting.c calculate_ray_values.c dda.c calculate_perp_wall_dist.c
-
-DRAW_SRCS =		draw_screen.c set_floor_ceil.c
+RAY_SRCS =		raycasting.c calculate_ray_values.c dda.c calculate_perp_wall_dist.c \
+				set_floor_ceil.c
 
 LIBFT_DIR = libft
 LIBFT = libft.a
@@ -45,8 +43,7 @@ LIBFT_LIB = -lft
 SRCS = $(addprefix $(SRCS_DIR)/, main.c) \
 	$(addprefix $(SRCS_DIR)/$(PARSING_DIR)/, $(PARSING_SRCS)) \
 	$(addprefix $(SRCS_DIR)/$(UTIL_DIR)/, $(UTIL_SRCS)) \
-	$(addprefix $(SRCS_DIR)/$(RAY_DIR)/, $(RAY_SRCS)) \
-	$(addprefix $(SRCS_DIR)/$(DRAW_DIR)/, $(DRAW_SRCS))
+	$(addprefix $(SRCS_DIR)/$(RAY_DIR)/, $(RAY_SRCS)) 
 
 OBJS = $(SRCS:.c=.o)
 

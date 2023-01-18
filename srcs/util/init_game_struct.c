@@ -33,4 +33,7 @@ void	init_game_struct(t_game *game, t_img *img)
 		game->f[i] = -1;
 		game->c[i] = -1;
 	}
+	game->mlx = NULL;
+	game->window = NULL;
+	img->image = NULL;
 }

@@ -18,12 +18,12 @@ static void	validate_map_char(t_game *game)
 			else if (ft_strchr("NSEW", game->map[i][j]))
 			{
 				cnt++;
-				game->pos_x = j;
-				game->pos_y = i;
+				game->pos_x = j + 0.0001;
+				game->pos_y = i + 0.0001;
 				game->dir_x = 0;
 				game->dir_y = -1;
-				game->plane_x = 0;
-				game->plane_y = 0.66;
+				game->plane_x = 0.66;
+				game->plane_y = 0.0;
 			}
 		}
 	}

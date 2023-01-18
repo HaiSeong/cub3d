@@ -2,26 +2,23 @@
 
 void	dda(t_game *game, t_ray *ray)
 {
-	int	map_x;
-	int	map_y;
-
-	map_x = game->pos_x;
-	map_y = game->pos_y;
+	ray->map_x = game->pos_x;
+	ray->map_y = game->pos_y;
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
 		{
 			ray->side_dist_x += ray->delta_dist_x;
-			map_x += ray->step_x;
+			ray->map_x += ray->step_x;
 			ray->side = 0;
 		}
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;
-			map_y += ray->step_y;
+			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (game->map[map_y][map_x] > 0)
+		if (game->map[ray->map_y][ray->map_x] > '0')
 			ray->hit = 1;
 	}
 }
