@@ -1,10 +1,10 @@
 
 
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
 
+NO ./resorce/image/wall0.xpm
+SO ./resorce/image/wall1.xpm
+WE ./resorce/image/wall2.xpm
+EA ./resorce/image/wall3.xpm
 
 F 255,100,0
 C 225,30,1
