@@ -8,7 +8,7 @@ static void	validate_map_char(t_game *game)
 
 	cnt = 0;
 	i = -1;
-	while (++i < game->height)
+	while (++i < game->map_height)
 	{
 		j = -1;
 		while (game->map[i][++j] != '\0')
@@ -16,7 +16,15 @@ static void	validate_map_char(t_game *game)
 			if (!ft_strchr(" 01NSEW", game->map[i][j]))
 				ft_error(game, "strange characters in the map");
 			else if (ft_strchr("NSEW", game->map[i][j]))
+			{
 				cnt++;
+				game->pos_x = j;
+				game->pos_y = i;
+				game->dir_x = 0;
+				game->dir_y = -1;
+				game->plane_x = 0;
+				game->plane_y = 0.66;
+			}
 		}
 	}
 	if (cnt < 1)
@@ -30,15 +38,15 @@ static void	validate_row(t_game *game, int row)
 	int	i;
 
 	i = 0;
-	while (i < game->width)
+	while (i < game->map_width)
 	{
-		while (i < game->width && game->map[row][i] == ' ')
+		while (i < game->map_width && game->map[row][i] == ' ')
 			i++;
 		if (game->map[row][i] == '\0')
 			break ;
 		if (game->map[row][i] != '1')
 			ft_error(game, "map is not walled around");
-		while (i < game->width && game->map[row][i] != ' ')
+		while (i < game->map_width && game->map[row][i] != ' ')
 			i++;
 		if (game->map[row][i - 1] != '1')
 			ft_error(game, "map is not walled around");
@@ -50,15 +58,15 @@ static void	validate_column(t_game *game, int column)
 	int	i;
 
 	i = 0;
-	while (i < game->height)
+	while (i < game->map_height)
 	{
-		while (i < game->height && game->map[i][column] == ' ')
+		while (i < game->map_height && game->map[i][column] == ' ')
 			i++;
-		if (i >= game->height)
+		if (i >= game->map_height)
 			break ;
 		if (game->map[i][column] != '1')
 			ft_error(game, "map is not walled around");
-		while (i < game->height && game->map[i][column] != ' ')
+		while (i < game->map_height && game->map[i][column] != ' ')
 			i++;
 		if (game->map[i - 1][column] != '1')
 			ft_error(game, "map is not walled around");
@@ -70,11 +78,11 @@ static void	validate_map_wall(t_game *game)
 	int	i;
 
 	i = -1;
-	while (++i < game->height)
+	while (++i < game->map_height)
 		validate_row(game, i);
 		
 	i = -1;
-	while (++i < game->width)
+	while (++i < game->map_width)
 		validate_column(game, i);
 	
 }

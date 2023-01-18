@@ -54,9 +54,9 @@ static void	linkedlist_to_arr(t_game *game, t_list **map_ll)
 	int		i;
 	int		j;
 
-	game->height = ft_lstsize(*map_ll);
-	game->width = get_width(*map_ll);
-	game->map = init_2d_arr(game->height, game->width);
+	game->map_height = ft_lstsize(*map_ll);
+	game->map_width = get_width(*map_ll);
+	game->map = init_2d_arr(game->map_height, game->map_width);
 	if (game->map == NULL)
 	{
 		ft_lstclear(map_ll, free);

@@ -22,12 +22,12 @@ static int	arr_to_hex(int *arr)
 
 void	validate_rgb_lines(t_game *game)
 {
-	validate(game, game->F);
-	validate(game, game->C);
-	game->F_hex = arr_to_hex(game->F);
-	game->C_hex = arr_to_hex(game->C);
-	free(game->F);
-	free(game->C);
-	game->F = NULL;
-	game->C = NULL;
+	validate(game, game->f);
+	validate(game, game->c);
+	game->f_hex = arr_to_hex(game->f);
+	game->c_hex = arr_to_hex(game->c);
+	free(game->f);
+	free(game->c);
+	game->f = NULL;
+	game->c = NULL;
 }

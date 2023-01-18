@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_cub_file.c                                 :+:      :+:    :+:   */
+/*   calculate_perp_wall_dist.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 16:56:58 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/18 17:05:34 by hajeong          ###   ########.fr       */
+/*   Created: 2023/01/18 14:16:34 by hajeong           #+#    #+#             */
+/*   Updated: 2023/01/18 15:01:41 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void parsing_cub_file(t_game *game, char *file)
+void	calculate_perp_wall_dist(t_game *game, t_ray *ray)
 {
-	int		fd;
-	char	*line;
-
-	fd = read_file(file);
-	if (fd < 0)
-		ft_error(game, "failed to open .cub file");
-	parsing_texture_lines(game, fd);
-	// validate_texture_lines(game);
-	parsing_rgb_lines(game, fd);
-	validate_rgb_lines(game);
-	parsing_map_lines(game, fd);
-	check_needless_lines(game, fd);
-	validate_map(game);
-	// system("leaks --list cub3d");
-	close(fd);
+	if (ray->side == 0)
+		ray->perp_wall_dist = (ray->map_x - game->pos_x + \
+		(1 - ray->step_x) / 2) / ray->ray_dir_x;
+	else
+		ray->perp_wall_dist = (ray->map_y - game->pos_y + \
+		(1 - ray->step_y) / 2) / ray->ray_dir_y;
 }

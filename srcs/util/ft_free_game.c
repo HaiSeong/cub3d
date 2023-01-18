@@ -12,10 +12,10 @@ void	ft_free_game(t_game *game)
 		free(game->texture_we);
 	if (game->texture_ea != NULL)
 		free(game->texture_ea);
-	if (game->F != NULL)
-		free(game->F);
-	if (game->C != NULL)
-		free(game->C);
+	if (game->f != NULL)
+		free(game->f);
+	if (game->c != NULL)
+		free(game->c);
 	if (game->map != NULL)
 		ft_free_strs(game->map);
 	

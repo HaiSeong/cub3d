@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-static int	press_key(int keycode, t_info *info)
+static int	press_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
 		printf("press w\n");
@@ -13,42 +13,63 @@ static int	press_key(int keycode, t_info *info)
 	else if (keycode == KEY_ESC)
 	{
 		printf("press esc\n");
-		mlx_destroy_window(info->mlx, info->window);
+		mlx_destroy_window(game->mlx, game->window);
 		exit(EXIT_SUCCESS);
 	}
+	raycasting(game);
+	// draw_screen(&game, &(game->ray));
 	return (0);
 }
 
-static int	click_destroy(t_info *info)
+static int	click_destroy(t_game *game)
 {
 	printf("click destroy\n");
-	mlx_destroy_window(info->mlx, info->window);
+	mlx_destroy_window(game->mlx, game->window);
 	exit(EXIT_SUCCESS);
 }
 
 int main(int argc, char *argv[])
 {
-	t_game game;
-	t_info	info;
+	t_game	game;
+	t_img	img;
 
-	init_game_struct(&game);
+	init_game_struct(&game, &img);
 	validate_arg(&game, argc, argv);
 	parsing_cub_file(&game, argv[1]);
-	ft_printf("texture_no : %s\n", game.texture_no);
-	ft_printf("texture_so : %s\n", game.texture_so);
-	ft_printf("texture_we : %s\n", game.texture_we);
-	ft_printf("texture_ea : %s\n", game.texture_ea);
 
-	ft_printf("width : %d, height : %d\n", game.width, game.height);
-	for (int i = 0 ; i< game.height; i++)
-		ft_printf("[%s]\n", game.map[i]);
 
-	info.mlx = mlx_init();
-	info.window = mlx_new_window(info.mlx, \
-		game.width * 64, game.height * 64, "cub3d");
-	mlx_hook(info.window, ON_CLICK, 0, press_key, &info);
-	mlx_hook(info.window, ON_DESTROY, 0, click_destroy, &info);
-	mlx_loop(info.mlx);
+	game.mlx = mlx_init();
+	game.img->image = mlx_new_image(game.mlx, WIN_WIDTH, WIN_HEIGHT);
+	if (game.img->image == NULL)
+		ft_error(&game, "mlx error");
+	game.window = mlx_new_window(game.mlx, \
+		WIN_WIDTH, WIN_HEIGHT, "cub3d");
+	
+	// game.img->buffer = mlx_get_data_addr(game.img->image, &(game.img->pixel_bits), &(game.img->line_bytes), &(game.img->endian));
+	// for(int y = 0; y < WIN_HEIGHT/ 2; ++y)
+	// {
+	// 	for(int x = 0; x < WIN_WIDTH; ++x)
+	// 	{
+	// 		int pixel = (y * game.img->line_bytes) + (x * 4);
 
-	ft_free_game(&game);
+	// 		game.img->buffer[pixel + 0] = (game.c_hex) & 0xFF;
+	// 		game.img->buffer[pixel + 1] = (game.c_hex >> 8) & 0xFF;
+	// 		game.img->buffer[pixel + 2] = (game.c_hex >> 16) & 0xFF;
+	// 		game.img->buffer[pixel + 3] = (game.c_hex >> 24);
+
+	// 		pixel = ((y + WIN_HEIGHT/ 2) * game.img->line_bytes) + (x * 4);
+
+	// 		game.img->buffer[pixel + 0] = (game.f_hex) & 0xFF;
+	// 		game.img->buffer[pixel + 1] = (game.f_hex >> 8) & 0xFF;
+	// 		game.img->buffer[pixel + 2] = (game.f_hex >> 16) & 0xFF;
+	// 		game.img->buffer[pixel + 3] = (game.f_hex >> 24);
+	// 	}
+	// }
+	// mlx_put_image_to_window(game.mlx, game.window, game.img->image, 0, 0);
+	
+	mlx_hook(game.window, ON_CLICK, 0, press_key, &game);
+	mlx_hook(game.window, ON_DESTROY, 0, click_destroy, &game);
+	mlx_loop(game.mlx);
+
+	// ft_free_game(&game);s
 }

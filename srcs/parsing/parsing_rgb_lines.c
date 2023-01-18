@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 18:37:58 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/18 15:03:01 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ char *key, char *value)
 static void	assign_rgb(t_game *game, char *key, char *value)
 {
 	if (ft_strcmp(key, "F") == 0)
-		assign_rgb_by_key(game, game->F, key, value);
+		assign_rgb_by_key(game, game->f, key, value);
 	else if (ft_strcmp(key, "C") == 0)
-		assign_rgb_by_key(game, game->C, key, value);
+		assign_rgb_by_key(game, game->c, key, value);
 	else
 		ft_error(game, "");//error
 }
@@ -72,7 +72,7 @@ void	parsing_rgb_lines(t_game *game, int fd)
 		free(game->line);
 		game->line = get_next_line(fd);
 	}
-	if (game->F[0] < 0 || game->F[1] < 0 || game->F[2] < 0 || \
-		game->C[0] < 0 || game->C[1] < 0 || game->C[2] < 0)
+	if (game->f[0] < 0 || game->f[1] < 0 || game->f[2] < 0 || \
+		game->c[0] < 0 || game->c[1] < 0 || game->c[2] < 0)
 		ft_error(game, "need more imformation about rgb property");// error
 }
