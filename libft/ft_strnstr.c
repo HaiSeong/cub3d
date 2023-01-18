@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 10:12:44 by hajeong           #+#    #+#             */
-/*   Updated: 2022/03/12 21:55:06 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:01:19 by jungeun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	needle_size;
 
 	i = 0;
+	(void)haystack_size;
 	haystack_size = ft_strlen(haystack);
 	needle_size = ft_strlen(needle);
 	if (needle_size == 0)

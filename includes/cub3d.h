@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 18:33:23 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:14:32 by jungeun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # define KEY_RELEASE 	3
 # define KEY_EXIT 		17
@@ -26,6 +27,13 @@
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
+
+# define KEY_LEFT		123
+# define KEY_RIGHT		124
+
+# define ON_CLICK		2
+# define ON_DESTROY		17
+
 
 struct s_game
 {
@@ -43,6 +51,12 @@ struct s_game
 	char	**map;
 };
 typedef struct s_game t_game;
+
+typedef struct s_info
+{
+	void	*mlx;
+	void	*window;
+}	t_info;
 
 // parsing
 void	parsing_cub_file(t_game *game, char *file);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+         #
+#    By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/13 18:14:58 by hajeong          ###   ########.fr        #
+#    Updated: 2023/01/16 17:13:47 by jungeun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = cub3d
 
 CC = cc
 CFLAGS =  -g
+MLXFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 INCLUDES_DIR = includes
 LIBS_DIR = libft
@@ -45,7 +46,8 @@ all : $(NAME)
 
 $(NAME) : $(OBJS)
 	make -C $(LIBFT_DIR) bonus
-	$(CC) $(CFLAGS) $(OBJS) -I $(INCLUDES_DIR) -L $(LIBFT_DIR) $(LIBFT_LIB) -o $@
+	make -C $(MLX_DIR) all
+	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) -I $(INCLUDES_DIR) -L $(LIBFT_DIR) $(LIBFT_LIB) -o $@
 	
 %.o : %.c
 	$(CC) $(CFLAGS) -I $(INCLUDES_DIR) -c $< -o $@
@@ -53,6 +55,7 @@ $(NAME) : $(OBJS)
 clean :
 	rm -rf $(OBJS)
 	make -C $(LIBFT_DIR) clean
+	make -C $(MLX_DIR) clean
 
 fclean : clean
 	rm -rf $(NAME)
