@@ -7,10 +7,8 @@ int main(int argc, char *argv[])
 
 	init_game_struct(&game, &img);
 	validate_arg(&game, argc, argv);
-	parsing_cub_file(&game, argv[1]);
-
-
 	game.mlx = mlx_init();
+	parsing_cub_file(&game, argv[1]);
 	game.img->image = mlx_new_image(game.mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (game.img->image == NULL)
 		ft_error(&game, "mlx error");

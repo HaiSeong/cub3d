@@ -1,13 +1,13 @@
 
 
 
-NO ./resorce/image/wall0.xpm
-SO ./resorce/image/wall1.xpm
-WE ./resorce/image/wall2.xpm
-EA ./resorce/image/wall3.xpm
+NO ./resource/image/wall0.xpm
+SO ./resource/image/wall1.xpm
+WE ./resource/image/wall2.xpm
+EA ./resource/image/wall3.xpm
 
-F 255,100,0
-C 225,30,1
+F 93,173,236
+C 255,255,230
 
  111111
 1S000001

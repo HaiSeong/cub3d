@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/19 12:30:18 by jungeun          ###   ########.fr       */
+/*   Updated: 2023/01/19 16:16:26 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ typedef struct s_ray
 	double	delta_dist_x;
 	double	delta_dist_y;
 	double	perp_wall_dist;
+	double	wall_x;
+	int		texture_x;
+	int		texture_y;
+	int		line_height;
+	int		draw_start;
+	int		drawEnd;
 }	t_ray;
 
 typedef struct s_game
@@ -78,6 +84,14 @@ typedef struct s_game
 	char	*texture_so;
 	char	*texture_we;
 	char	*texture_ea;
+	// void	*img_no;
+	// void	*img_so;
+	// void	*img_we;
+	// void	*img_ea;
+	t_img	img_no;
+	t_img	img_so;
+	t_img	img_we;
+	t_img	img_ea;
 	int		*f;
 	int		*c;
 	int		f_hex;
