@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/18 17:02:16 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/19 12:30:18 by jungeun          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
-
 # define KEY_LEFT		123
 # define KEY_RIGHT		124
+
+# define SPEED			0.2
 
 # define ON_CLICK		2
 # define ON_DESTROY		17
@@ -120,5 +121,12 @@ void	dda(t_game *game, t_ray *ray);
 void	calculate_perp_wall_dist(t_game *game, t_ray *ray);
 void	set_floor(t_game *game);
 void	set_ceil(t_game *game);
+
+// event
+int		press_key(int keycode, t_game *game);
+void	press_ws(t_game *game, int flag);
+void	press_ad(t_game *game, int flag);
+void	press_lr(t_game *game, int flag);
+int		click_destroy(t_game *game);
 
 #endif

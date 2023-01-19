@@ -1,34 +1,5 @@
 #include "cub3d.h"
 
-static int	press_key(int keycode, t_game *game)
-{
-	if (keycode == KEY_W)
-		printf("press w\n");
-	else if (keycode == KEY_A)
-		printf("press a\n");
-	else if (keycode == KEY_S)
-		printf("press s\n");
-	else if (keycode == KEY_D)
-		printf("press d\n");
-	else if (keycode == KEY_ESC)
-	{
-		printf("press esc\n");
-		mlx_destroy_window(game->mlx, game->window);
-		ft_free_game(&game);
-		exit(EXIT_SUCCESS);
-	}
-	raycasting(game);
-	return (0);
-}
-
-static int	click_destroy(t_game *game)
-{
-	printf("click destroy\n");
-	mlx_destroy_window(game->mlx, game->window);
-	ft_free_game(&game);
-	exit(EXIT_SUCCESS);
-}
-
 int main(int argc, char *argv[])
 {
 	t_game	game;

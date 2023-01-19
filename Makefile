@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+         #
+#    By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/18 16:21:37 by hajeong          ###   ########.fr        #
+#    Updated: 2023/01/19 12:20:19 by jungeun          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INCLUDES_DIR = includes
 LIBS_DIR = libft
 SRCS_DIR = srcs
 MLX_DIR = mlx
+EVENT_DIR = event
 
 # srcs directory
 PARSING_DIR = parsing
@@ -36,6 +37,9 @@ UTIL_SRCS =		ft_split_isspace.c init_game_struct.c ft_free_strs.c ft_free_game.c
 RAY_SRCS =		raycasting.c calculate_ray_values.c dda.c calculate_perp_wall_dist.c \
 				set_floor_ceil.c
 
+EVENT_SRCS =	press_key.c
+
+
 LIBFT_DIR = libft
 LIBFT = libft.a
 LIBFT_LIB = -lft
@@ -43,7 +47,8 @@ LIBFT_LIB = -lft
 SRCS = $(addprefix $(SRCS_DIR)/, main.c) \
 	$(addprefix $(SRCS_DIR)/$(PARSING_DIR)/, $(PARSING_SRCS)) \
 	$(addprefix $(SRCS_DIR)/$(UTIL_DIR)/, $(UTIL_SRCS)) \
-	$(addprefix $(SRCS_DIR)/$(RAY_DIR)/, $(RAY_SRCS)) 
+	$(addprefix $(SRCS_DIR)/$(RAY_DIR)/, $(RAY_SRCS)) \
+	$(addprefix $(SRCS_DIR)/$(EVENT_DIR)/, $(EVENT_SRCS))
 
 OBJS = $(SRCS:.c=.o)
 
