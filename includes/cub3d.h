@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/19 16:16:26 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:48:18 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 
 # define WIN_WIDTH		1920
 # define WIN_HEIGHT		1080
+
+# define TEXTURE_WIDTH	64
 
 typedef struct s_img
 {
@@ -71,6 +73,8 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		drawEnd;
+	double	step;
+	double	texture_pos;
 }	t_ray;
 
 typedef struct s_game
