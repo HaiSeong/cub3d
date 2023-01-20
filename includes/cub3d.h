@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/20 22:11:13 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/20 22:42:40 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define WIN_WIDTH		1920
 # define WIN_HEIGHT		1080
 
-# define TEXTURE_WIDTH	64
+// # define TEXTURE_WIDTH	64
 
 typedef struct s_img
 {

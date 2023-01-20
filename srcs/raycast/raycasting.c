@@ -28,13 +28,13 @@ void	set_wall(t_game *game, t_ray *ray, int x)
 		texture_img = game->img_we;
 
 		
-	ray->texture_x = (int)(ray->wall_x * (double) TEXTURE_WIDTH);
+	ray->texture_x = (int)(ray->wall_x * (double) texture_img.line_bytes/4);
 
 	if (ray->side == 0 && ray->ray_dir_x > 0)
-    	ray->texture_x = TEXTURE_WIDTH - ray->texture_x - 1;
+    	ray->texture_x = texture_img.line_bytes/4 - ray->texture_x - 1;
 
 	if (ray->side == 1 && ray->ray_dir_y < 0)
-    	ray->texture_x = TEXTURE_WIDTH - ray->texture_x - 1;
+    	ray->texture_x = texture_img.line_bytes/4 - ray->texture_x - 1;
 	
 	ray->line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = - ray->line_height / 2 + WIN_HEIGHT / 2;
@@ -47,13 +47,13 @@ void	set_wall(t_game *game, t_ray *ray, int x)
 	if (ray->line_height <= 0)
 		return ;
 
-	ray->step = (double) TEXTURE_WIDTH / ray->line_height;
+	ray->step = (double) texture_img.line_bytes/4 / ray->line_height;
 	ray->texture_pos = (ray->draw_start - WIN_HEIGHT / 2 + ray->line_height / 2) * ray->step;
 
 	for(int y = ray->draw_start; y < ray->drawEnd; y += 1)
 	{
 		pixel = (y * game->img->line_bytes / 4) + (x);
-		ray->texture_y = (int)ray->texture_pos & (TEXTURE_WIDTH - 1);
+		ray->texture_y = (int)ray->texture_pos & (texture_img.line_bytes/4 - 1);
 
 		game->img->buffer[pixel] = texture_img.buffer[ray->texture_y * texture_img.line_bytes/4 + ray->texture_x];
 		ray->texture_pos += ray->step;
@@ -65,7 +65,7 @@ void	raycasting(t_game *game)
 	t_ray ray;
 	int x;
 
-	game->img->buffer = mlx_get_data_addr(game->img->image, &(game->img->pixel_bits), &(game->img->line_bytes), &(game->img->endian));
+	game->img->buffer = (int *)mlx_get_data_addr(game->img->image, &(game->img->pixel_bits), &(game->img->line_bytes), &(game->img->endian));
 	set_floor(game);
 	set_ceil(game);
 	x = 0;

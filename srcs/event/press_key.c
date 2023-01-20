@@ -68,6 +68,6 @@ void	press_lr(t_game *game, int flag)
 int	click_destroy(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->window);
-	ft_free_game(&game);
+	ft_free_game(game);
 	exit(EXIT_SUCCESS);
 }
