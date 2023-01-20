@@ -16,6 +16,7 @@ int	press_key(int keycode, t_game *game)
 		press_lr(game, 1);
 	else if (keycode == KEY_ESC)
 		click_destroy(game);
+	mlx_clear_window(game->mlx, game->window);
 	raycasting(game);
 	return (0);
 }

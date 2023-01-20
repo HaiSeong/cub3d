@@ -2,8 +2,11 @@
 
 void	set_wall(t_game *game, t_ray *ray, int x)
 {
-	int	pixel;
-	int	pixel2;
+	int		step;
+	double	texture_pos;
+	int		i;
+	int		texture_y;
+	int		color;
 
 	if (ray->side == 0)
 	{
@@ -16,56 +19,50 @@ void	set_wall(t_game *game, t_ray *ray, int x)
 		ray->wall_x -= floor(ray->wall_x);
 	}
 
-	ray->texture_x = (int)(ray->wall_x * 1920.0);
+	ray->texture_x = (int)(ray->wall_x * (double)PIXEL); //
 
 	if (ray->side == 1 && ray->ray_dir_x < 0)
-    	ray->texture_x = 1920 - ray->texture_x - 1;
+    	ray->texture_x = PIXEL - ray->texture_x - 1; //
 
 	if (ray->side == 0 && ray->ray_dir_y < 0)
-    	ray->texture_x = 1920 - ray->texture_x - 1;
+    	ray->texture_x = PIXEL - ray->texture_x - 1; //
 	
 	ray->line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = - ray->line_height / 2 + WIN_HEIGHT / 2;
-	if(ray->draw_start < 0)
+	if (ray->draw_start < 0)
 		ray->draw_start = 0;
 	ray->drawEnd =  ray->line_height / 2 + WIN_HEIGHT / 2;
-	if(ray->drawEnd >= WIN_HEIGHT)
+	if (ray->drawEnd >= WIN_HEIGHT)
 		ray->drawEnd = WIN_HEIGHT - 1;
 
-// 		while (벽의 시작지점부터 끝지점까지)
-// {
-//     textureY = (int)texture_pos & (TEXTURE_HEIGHT - 1);
-//     texture_pos += step;
-//     픽셀 가져와서 색칠하는 함수;
-//     벽의 세로 좌표++;
-// }
-	t_img texture_img;
-
-	if (ray->side == 1 && ray->step_y < 0)
-		texture_img = game->img_no;
-	else if (ray->side == 1)
-		texture_img = game->img_so;
-	else if (ray->step_x > 0)
-		texture_img = game->img_ea;
-	else
-		texture_img = game->img_we;
-
-	if (ray->line_height <= 0)
-		return ;
-
-	int step = 1920 / ray->line_height;
-
-	pixel2 = (int)(ray->texture_x);
-	for(int y = ray->draw_start; y < ray->drawEnd; ++y)
+	int	tex_num = game->map[ray->map_y][ray->map_x] - 1;
+	// start
+	step = 1.0 * PIXEL / ray->line_height;
+	texture_pos = (ray->draw_start - WIN_HEIGHT / 2 + ray->line_height / 2) * step;
+	i = ray->draw_start;
+	while (i <= ray->drawEnd)
 	{
-		pixel = (y * game->img->line_bytes) + (x * 4);
-
-		game->img->buffer[pixel + 0] = texture_img.buffer[1280] & 0xFF;
-		game->img->buffer[pixel + 1] = (texture_img.buffer[1281] >> 8) & 0xFF;
-		game->img->buffer[pixel + 2] = (texture_img.buffer[1282] >> 16) & 0xFF;
-		game->img->buffer[pixel + 3] = (texture_img.buffer[1283] >> 24);
-		pixel2 += step;
+		texture_y = (int)texture_pos & (PIXEL - 1);
+		texture_pos += step;
+		color = game->texture[tex_num][PIXEL * texture_y + ray->texture_x];
+		game->temp[i][x] = color;
+		i++;
 	}
+}
+
+static void	draw_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < WIN_HEIGHT)
+	{
+		x = -1;
+		while (++x < WIN_WIDTH)
+			game->img->buffer[y * WIN_WIDTH + x] = game->temp[y][x];
+	}
+	mlx_put_image_to_window(game->mlx, game->window, game->img->image, 0, 0);
 }
 
 void	raycasting(t_game *game)
@@ -74,8 +71,8 @@ void	raycasting(t_game *game)
 	int x;
 
 	game->img->buffer = mlx_get_data_addr(game->img->image, &(game->img->pixel_bits), &(game->img->line_bytes), &(game->img->endian));
-	set_floor(game);
-	set_ceil(game);
+	// set_floor(game);
+	// set_ceil(game);
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
@@ -85,6 +82,6 @@ void	raycasting(t_game *game)
 		set_wall(game, &ray, x);
 		x++;
 	}
-	mlx_put_image_to_window(game->mlx, game->window, game->img->image, 0, 0);
+	draw_map(game);
 }
 
