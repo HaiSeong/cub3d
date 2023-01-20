@@ -1,5 +1,39 @@
 #include "cub3d.h"
 
+static void	set_play_direction(t_game *game, char direction, int i, int j)
+{
+	game->pos_x = (double) j;
+	game->pos_y = (double) i;
+	if (direction == 'N')
+	{
+		game->dir_x = 0;
+		game->dir_y = -1;
+		game->plane_x = 0.66;
+		game->plane_y = 0.0;
+	}
+	else if (direction == 'S')
+	{
+		game->dir_x = 0;
+		game->dir_y = 1;
+		game->plane_x = -0.66;
+		game->plane_y = 0.0;
+	}
+	else if (direction == 'W')
+	{
+		game->dir_x = -1;
+		game->dir_y = 0;
+		game->plane_x = 0.0;
+		game->plane_y = -0.66;
+	}
+	else if (direction == 'E')
+	{
+		game->dir_x = 1;
+		game->dir_y = 0;
+		game->plane_x = 0.0;
+		game->plane_y = 0.66;
+	}
+}
+
 static void	validate_map_char(t_game *game)
 {
 	int	i;
@@ -18,12 +52,8 @@ static void	validate_map_char(t_game *game)
 			else if (ft_strchr("NSEW", game->map[i][j]))
 			{
 				cnt++;
-				game->pos_x = j + 0.0001;
-				game->pos_y = i + 0.0001;
-				game->dir_x = 0;
-				game->dir_y = -1;
-				game->plane_x = 0.66;
-				game->plane_y = 0.0;
+				set_play_direction(game, game->map[i][j], i, j);
+				game->map[i][j] = '0';
 			}
 		}
 	}

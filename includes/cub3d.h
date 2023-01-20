@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/20 19:48:18 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/20 22:11:13 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_img
 	int		pixel_bits;
 	int		line_bytes;
 	int		endian;
-	char	*buffer;
+	int		*buffer;
 }	t_img;
 
 typedef struct s_ray

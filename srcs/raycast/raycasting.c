@@ -30,10 +30,10 @@ void	set_wall(t_game *game, t_ray *ray, int x)
 		
 	ray->texture_x = (int)(ray->wall_x * (double) TEXTURE_WIDTH);
 
-	if (ray->side == 1 && ray->ray_dir_x < 0)
+	if (ray->side == 0 && ray->ray_dir_x > 0)
     	ray->texture_x = TEXTURE_WIDTH - ray->texture_x - 1;
 
-	if (ray->side == 0 && ray->ray_dir_y < 0)
+	if (ray->side == 1 && ray->ray_dir_y < 0)
     	ray->texture_x = TEXTURE_WIDTH - ray->texture_x - 1;
 	
 	ray->line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
@@ -46,26 +46,16 @@ void	set_wall(t_game *game, t_ray *ray, int x)
 
 	if (ray->line_height <= 0)
 		return ;
-// 		while (벽의 시작지점부터 끝지점까지)
-// {
-//     textureY = (int)texture_pos & (TEXTURE_HEIGHT - 1);
-//     texture_pos += step;
-//     픽셀 가져와서 색칠하는 함수;
-//     벽의 세로 좌표++;
-// }
 
 	ray->step = (double) TEXTURE_WIDTH / ray->line_height;
 	ray->texture_pos = (ray->draw_start - WIN_HEIGHT / 2 + ray->line_height / 2) * ray->step;
 
 	for(int y = ray->draw_start; y < ray->drawEnd; y += 1)
 	{
-		pixel = (y * game->img->line_bytes) + (x * 4);
+		pixel = (y * game->img->line_bytes / 4) + (x);
 		ray->texture_y = (int)ray->texture_pos & (TEXTURE_WIDTH - 1);
 
-		game->img->buffer[pixel + 0] = texture_img.buffer[ray->texture_y * texture_img.line_bytes + ray->texture_x * 4];
-		game->img->buffer[pixel + 1] = (texture_img.buffer[ray->texture_y * texture_img.line_bytes + ray->texture_x * 4 + 1] >> 8) & 0xFF;
-		game->img->buffer[pixel + 2] = (texture_img.buffer[ray->texture_y * texture_img.line_bytes + ray->texture_x * 4 + 2] >> 16) & 0xFF;
-		game->img->buffer[pixel + 3] = (texture_img.buffer[ray->texture_y * texture_img.line_bytes + ray->texture_x * 4 + 3] >> 24);
+		game->img->buffer[pixel] = texture_img.buffer[ray->texture_y * texture_img.line_bytes/4 + ray->texture_x];
 		ray->texture_pos += ray->step;
 	}
 }
