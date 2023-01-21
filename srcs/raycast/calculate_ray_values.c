@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate_ray_values.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:12:27 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/18 17:16:59 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/21 12:27:50 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ static void	set_values_by_ray_dir(t_game *game, t_ray *ray)
 
 void	calculate_ray_values(t_game *game, t_ray *ray, int x)
 {
-	ray->camera_x = 2 * x / (double) WIN_WIDTH - 1; 
+	ray->camera_x = 2 * x / (double) WIN_WIDTH - 1;
 	ray->ray_dir_x = game->dir_x + game->plane_x * ray->camera_x;
 	ray->ray_dir_y = game->dir_y + game->plane_y * ray->camera_x;
-	
 	ray->map_x = (int)game->pos_x;
 	ray->map_y = (int)game->pos_y;
-	
 	ray->delta_dist_x = 0;
 	if (ray->ray_dir_x != 0)
 		ray->delta_dist_x = fabs(1 / ray->ray_dir_x);

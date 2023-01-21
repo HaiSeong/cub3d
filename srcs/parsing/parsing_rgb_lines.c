@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_rgb_lines.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/18 15:03:01 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/21 12:08:15 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ char *key, char *value)
 {
 	char	**strs;
 	int		i;
-	
+
 	if (field[0] >= 0 || field[1] >= 0 || field[2] >= 0)
-		ft_error(game, "rgb property is duplicated defined"); // error
+		ft_error(game, "rgb property is duplicated defined");
 	i = -1;
 	while (value[++i] != '\0')
 		if (!ft_isdigit(value[i]) && value[i] != ',')
-			ft_error(game, "rgb property contains strange characters"); //error
+			ft_error(game, "rgb property contains strange characters");
 	strs = ft_split(value, ',');
 	if (strs == NULL)
-		ft_error(game, "malloc error");// error
-	if (strs[3] != NULL || !strs[0] || !strs[1] || !strs[2]) 
+		ft_error(game, "malloc error");
+	if (strs[3] != NULL || !strs[0] || !strs[1] || !strs[2])
 	{
 		ft_free_strs(strs);
-		ft_error(game, "rgb property must have 3 numbers");// error + ~~~~
+		ft_error(game, "rgb property must have 3 numbers");
 	}
 	i = -1;
 	while (++i < 3)
@@ -45,7 +45,7 @@ static void	assign_rgb(t_game *game, char *key, char *value)
 	else if (ft_strcmp(key, "C") == 0)
 		assign_rgb_by_key(game, game->c, key, value);
 	else
-		ft_error(game, "");//error
+		ft_error(game, "");
 }
 
 void	parsing_rgb_lines(t_game *game, int fd)
@@ -61,11 +61,11 @@ void	parsing_rgb_lines(t_game *game, int fd)
 	{
 		strs = ft_split_isspace(game->line);
 		if (strs == NULL)
-			ft_error(game, "malloc error");// error
+			ft_error(game, "malloc error");
 		if (strs[2] != NULL || !strs[0] || !strs[1])
 		{
 			ft_free_strs(strs);
-			ft_error(game, "rgb property must have 2 fields");// error + free strs
+			ft_error(game, "rgb property must have 2 fields");
 		}
 		assign_rgb(game, strs[0], strs[1]);
 		ft_free_strs(strs);
@@ -74,5 +74,5 @@ void	parsing_rgb_lines(t_game *game, int fd)
 	}
 	if (game->f[0] < 0 || game->f[1] < 0 || game->f[2] < 0 || \
 		game->c[0] < 0 || game->c[1] < 0 || game->c[2] < 0)
-		ft_error(game, "need more imformation about rgb property");// error
+		ft_error(game, "need more imformation about rgb property");
 }

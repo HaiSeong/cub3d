@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_cub_file.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:56:58 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/18 17:05:34 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/21 12:06:27 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void parsing_cub_file(t_game *game, char *file)
+void	parsing_cub_file(t_game *game, char *file)
 {
 	int		fd;
 	char	*line;
@@ -27,6 +27,5 @@ void parsing_cub_file(t_game *game, char *file)
 	parsing_map_lines(game, fd);
 	check_needless_lines(game, fd);
 	validate_map(game);
-	// system("leaks --list cub3d");
 	close(fd);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   press_key.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/21 12:05:07 by jungchoi          #+#    #+#             */
+/*   Updated: 2023/01/21 12:05:23 by jungchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	press_key(int keycode, t_game *game)
@@ -55,12 +67,8 @@ void	press_lr(t_game *game, int flag)
 	cp_dir_x = game->dir_x;
 	cp_plane_x = game->plane_x;
 	theta = (double)SPEED * flag;
-
-	//시선 회전
 	game->dir_x = game->dir_x * cos(theta) - game->dir_y * sin(theta);
 	game->dir_y = cp_dir_x * sin(theta) + game->dir_y * cos(theta);
-
-	//카메라 평면 회전
 	game->plane_x = game->plane_x * cos(theta) - game->plane_y * sin(theta);
 	game->plane_y = cp_plane_x * sin(theta) + game->plane_y * cos(theta);
 }

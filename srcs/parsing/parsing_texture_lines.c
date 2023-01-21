@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_texture_lines.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/13 18:38:24 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/21 12:34:08 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void ft_error_wrong_field_number(t_game *game, char **strs)
+static void	ft_error_wrong_field_number(t_game *game, char **strs)
 {
 	ft_free_strs(strs);
-	ft_error(game, "texture property must have 2 fields");// error + free strs
+	ft_error(game, "texture property must have 2 fields");
 }
 
 static void	assign_texture_by_key(t_game *game, char **field, \
 char *key, char *value)
 {
 	if (*field != NULL)
-		ft_error(game, "texture property is duplicated defined"); // error
+		ft_error(game, "texture property is duplicated defined");
 	*field = value;
 }
 
@@ -37,8 +37,8 @@ static void	assign_texture(t_game *game, char *key, char *value)
 	else if (ft_strcmp(key, "EA") == 0)
 		assign_texture_by_key(game, &(game->texture_ea), key, value);
 	else
-		ft_error(game, "strange identifier in texture lines");//error
-} 
+		ft_error(game, "strange identifier in texture lines");
+}
 
 void	parsing_texture_lines(t_game *game, int fd)
 {
@@ -54,8 +54,8 @@ void	parsing_texture_lines(t_game *game, int fd)
 	{
 		strs = ft_split_isspace(game->line);
 		if (strs == NULL)
-			ft_error(game, "malloc error");// error
-		if (strs[2] != NULL || !strs[0]|| !strs[1])
+			ft_error(game, "malloc error");
+		if (strs[2] != NULL || !strs[0] || !strs[1])
 			ft_error_wrong_field_number(game, strs);
 		assign_texture(game, strs[0], strs[1]);
 		free(strs[0]);
@@ -65,5 +65,5 @@ void	parsing_texture_lines(t_game *game, int fd)
 	}
 	if (game->texture_no == NULL || game->texture_so == NULL \
 		|| game->texture_we == NULL || game->texture_ea == NULL)
-		ft_error(game, "need more imformation about texture property");// error
+		ft_error(game, "need more imformation about texture property");
 }

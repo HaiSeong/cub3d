@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/20 22:42:40 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/21 12:32:52 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <unistd.h>
@@ -22,7 +23,6 @@
 
 # define KEY_RELEASE 	3
 # define KEY_EXIT 		17
-
 # define KEY_ESC		53
 # define KEY_W			13
 # define KEY_A			0
@@ -31,15 +31,13 @@
 # define KEY_LEFT		123
 # define KEY_RIGHT		124
 
-# define SPEED			0.2
-
 # define ON_CLICK		2
 # define ON_DESTROY		17
 
+# define SPEED			0.2
+
 # define WIN_WIDTH		1920
 # define WIN_HEIGHT		1080
-
-// # define TEXTURE_WIDTH	64
 
 typedef struct s_img
 {
@@ -72,7 +70,7 @@ typedef struct s_ray
 	int		texture_y;
 	int		line_height;
 	int		draw_start;
-	int		drawEnd;
+	int		draw_end;
 	double	step;
 	double	texture_pos;
 }	t_ray;
@@ -88,10 +86,6 @@ typedef struct s_game
 	char	*texture_so;
 	char	*texture_we;
 	char	*texture_ea;
-	// void	*img_no;
-	// void	*img_so;
-	// void	*img_we;
-	// void	*img_ea;
 	t_img	img_no;
 	t_img	img_so;
 	t_img	img_we;
@@ -111,17 +105,19 @@ typedef struct s_game
 	double	plane_y;
 }	t_game;
 
-
 // parsing
 void	parsing_cub_file(t_game *game, char *file);
 int		read_file(char *file);
 void	parsing_texture_lines(t_game *game, int fd);
 void	parsing_rgb_lines(t_game *game, int fd);
 void	parsing_map_lines(t_game *game, int fd);
+void	xpm_file_to_image_texture(t_game *game);
+void	get_data_addr_texture(t_game *game);
 void	validate_texture_lines(t_game *game);
 void	validate_rgb_lines(t_game *game);
 void	validate_map(t_game *game);
 void	check_needless_lines(t_game *game, int fd);
+void	set_play_direction(t_game *game, char direction, int i, int j);
 
 // util
 void	init_game_struct(t_game *game, t_img *img);

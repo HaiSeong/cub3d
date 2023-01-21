@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_rgb_lines.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/21 12:24:25 by jungchoi          #+#    #+#             */
+/*   Updated: 2023/01/21 12:24:43 by jungchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-static void validate(t_game *game, int *arr)
+static void	validate(t_game *game, int *arr)
 {
 	int	i;
 

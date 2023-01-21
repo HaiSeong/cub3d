@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jungeun <jungeun@student.42.fr>            +#+  +:+       +#+         #
+#    By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/19 12:20:19 by jungeun          ###   ########.fr        #
+#    Updated: 2023/01/21 12:44:52 by jungchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ RAY_DIR = raycast
 
 PARSING_SRCS =	parsing_cub_file.c read_file.c parsing_texture_lines.c \
 				parsing_rgb_lines.c parsing_map_lines.c validate_texture_lines.c \
-				validate_rgb_lines.c validate_map.c check_needless_lines.c
+				validate_rgb_lines.c validate_map.c check_needless_lines.c set_play_direction.c
 				
 UTIL_SRCS =		ft_split_isspace.c init_game_struct.c ft_free_strs.c ft_free_game.c \
 				ft_error.c validate_arg.c

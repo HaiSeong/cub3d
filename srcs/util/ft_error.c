@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/21 12:14:17 by jungchoi          #+#    #+#             */
+/*   Updated: 2023/01/21 12:14:27 by jungchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	ft_destroy_images(t_game *game)
@@ -21,6 +33,5 @@ void	ft_error(t_game *game, char *msg)
 	if (game->window != NULL)
 		mlx_destroy_window(game->mlx, game->window);
 	ft_printf("Error : %s\n", msg);
-	// system("leaks cub3d");
 	exit(0);
 }

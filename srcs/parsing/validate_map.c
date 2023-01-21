@@ -1,38 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/21 12:10:27 by jungchoi          #+#    #+#             */
+/*   Updated: 2023/01/21 12:32:39 by jungchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static void	set_play_direction(t_game *game, char direction, int i, int j)
-{
-	game->pos_x = (double) j;
-	game->pos_y = (double) i;
-	if (direction == 'N')
-	{
-		game->dir_x = 0;
-		game->dir_y = -1;
-		game->plane_x = 0.66;
-		game->plane_y = 0.0;
-	}
-	else if (direction == 'S')
-	{
-		game->dir_x = 0;
-		game->dir_y = 1;
-		game->plane_x = -0.66;
-		game->plane_y = 0.0;
-	}
-	else if (direction == 'W')
-	{
-		game->dir_x = -1;
-		game->dir_y = 0;
-		game->plane_x = 0.0;
-		game->plane_y = -0.66;
-	}
-	else if (direction == 'E')
-	{
-		game->dir_x = 1;
-		game->dir_y = 0;
-		game->plane_x = 0.0;
-		game->plane_y = 0.66;
-	}
-}
+#include "cub3d.h"
 
 static void	validate_map_char(t_game *game)
 {
@@ -110,11 +88,9 @@ static void	validate_map_wall(t_game *game)
 	i = -1;
 	while (++i < game->map_height)
 		validate_row(game, i);
-		
 	i = -1;
 	while (++i < game->map_width)
 		validate_column(game, i);
-	
 }
 
 void	validate_map(t_game *game)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_map_lines.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/21 12:06:38 by jungchoi          #+#    #+#             */
+/*   Updated: 2023/01/21 12:06:49 by jungchoi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	get_width(t_list *map_ll)
@@ -73,7 +85,7 @@ static void	linkedlist_to_arr(t_game *game, t_list **map_ll)
 		node = node->next;
 	}
 	ft_lstclear(map_ll, free);
-} 
+}
 
 void	parsing_map_lines(t_game *game, int fd)
 {
