@@ -6,7 +6,7 @@
 #    By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/21 12:44:52 by jungchoi         ###   ########.fr        #
+#    Updated: 2023/01/21 18:51:27 by jungchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ PARSING_SRCS =	parsing_cub_file.c read_file.c parsing_texture_lines.c \
 				validate_rgb_lines.c validate_map.c check_needless_lines.c set_play_direction.c
 				
 UTIL_SRCS =		ft_split_isspace.c init_game_struct.c ft_free_strs.c ft_free_game.c \
-				ft_error.c validate_arg.c
+				ft_error.c validate_arg.c set_texture_image.c
 
 RAY_SRCS =		raycasting.c calculate_ray_values.c dda.c calculate_perp_wall_dist.c \
 				set_floor_ceil.c
