@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   press_key.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:05:07 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 12:05:23 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 14:18:25 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ int	click_destroy(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->window);
 	ft_free_game(game);
+	ft_destroy_images(game);
 	exit(EXIT_SUCCESS);
 }

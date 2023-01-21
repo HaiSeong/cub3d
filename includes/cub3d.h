@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 12:32:52 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 14:12:57 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ char	**ft_split_isspace(char const *s);
 void	ft_free_strs(char **strs);
 void	ft_free_game(t_game *game);
 void	ft_error(t_game *game, char *msg);
+void	ft_destroy_images(t_game *game);
 void	validate_arg(t_game *game, int argc, char *argv[]);
 
 // raycast

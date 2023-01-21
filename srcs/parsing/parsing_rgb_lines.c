@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_rgb_lines.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 12:08:15 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 14:16:51 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	assign_rgb(t_game *game, char *key, char *value)
 	else if (ft_strcmp(key, "C") == 0)
 		assign_rgb_by_key(game, game->c, key, value);
 	else
-		ft_error(game, "");
+		ft_error(game, "rgb property contains strange characters");
 }
 
 void	parsing_rgb_lines(t_game *game, int fd)
