@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:34:31 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 12:34:31 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:42:10 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_play_direction(t_game *game, char direction, int i, int j)
 {
-	game->pos_x = (double) j;
-	game->pos_y = (double) i;
+	game->pos_x = (double) j + 0.5;
+	game->pos_y = (double) i + 0.5;
 	if (direction == 'N')
 	{
 		game->dir_y = -1;

@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:28:12 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 12:32:28 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:31:18 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	set_floor(t_game *game)
 	int	y;
 	int	pixel;
 
-	y = -1;
-	while (++y < WIN_HEIGHT)
+	y = 0;
+	while (y < WIN_HEIGHT / 2)
 	{
 		x = -1;
 		while (++x < WIN_WIDTH)
@@ -27,6 +27,7 @@ void	set_floor(t_game *game)
 			pixel = (y * game->img->line_bytes / 4) + x;
 			game->img->buffer[pixel] = game->c_hex;
 		}
+		y++;
 	}
 }
 

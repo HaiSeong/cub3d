@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_rgb_lines.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 14:16:51 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/21 16:30:05 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char *key, char *value)
 	}
 	i = -1;
 	while (++i < 3)
-		field[i] = atoi(strs[i]);
+		field[i] = ft_atoi(strs[i]);
 	ft_free_strs(strs);
 }
 
