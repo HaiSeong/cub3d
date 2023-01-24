@@ -6,14 +6,14 @@
 #    By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/21 18:51:27 by jungchoi         ###   ########.fr        #
+#    Updated: 2023/01/24 13:25:19 by jungchoi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = cc
-CFLAGS =  -g
+CFLAGS = -Wall -Wextra -Werror -g
 MLXFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 INCLUDES_DIR = includes

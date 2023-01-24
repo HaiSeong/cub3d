@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:56:58 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 12:06:27 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:25:28 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	parsing_cub_file(t_game *game, char *file)
 {
 	int		fd;
-	char	*line;
 
 	fd = read_file(file);
 	if (fd < 0)

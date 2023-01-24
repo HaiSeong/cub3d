@@ -6,14 +6,14 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 16:30:05 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:26:27 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	assign_rgb_by_key(t_game *game, int *field, \
-char *key, char *value)
+char *value)
 {
 	char	**strs;
 	int		i;
@@ -41,9 +41,9 @@ char *key, char *value)
 static void	assign_rgb(t_game *game, char *key, char *value)
 {
 	if (ft_strcmp(key, "F") == 0)
-		assign_rgb_by_key(game, game->f, key, value);
+		assign_rgb_by_key(game, game->f, value);
 	else if (ft_strcmp(key, "C") == 0)
-		assign_rgb_by_key(game, game->c, key, value);
+		assign_rgb_by_key(game, game->c, value);
 	else
 		ft_error(game, "rgb property contains strange characters");
 }

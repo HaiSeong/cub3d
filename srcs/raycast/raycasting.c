@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:33:13 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 13:02:36 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:28:34 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	draw_wall(t_game *game, t_ray *ray, t_img *texture_img, int x)
 void	set_wall(t_game *game, t_ray *ray, int x)
 {
 	t_img	texture_img;
-	int		pixel;
 
 	if (ray->side == 1 && ray->step_y < 0)
 		texture_img = game->img_no;

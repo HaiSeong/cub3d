@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 18:50:55 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:28:08 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	ft_free_strs(char **strs);
 void	ft_free_game(t_game *game);
 void	ft_error(t_game *game, char *msg);
 void	ft_destroy_images(t_game *game);
-void	validate_arg(t_game *game, int argc, char *argv[]);
+void	validate_arg(t_game *game, char *argv[]);
 void	set_texture_image(t_game *game);
 void	xpm_file_to_image_texture(t_game *game);
 void	get_data_addr_texture(t_game *game);

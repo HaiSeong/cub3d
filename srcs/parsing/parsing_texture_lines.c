@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:53 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 12:34:08 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:25:55 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_error_wrong_field_number(t_game *game, char **strs)
 }
 
 static void	assign_texture_by_key(t_game *game, char **field, \
-char *key, char *value)
+char *value)
 {
 	if (*field != NULL)
 		ft_error(game, "texture property is duplicated defined");
@@ -29,13 +29,13 @@ char *key, char *value)
 static void	assign_texture(t_game *game, char *key, char *value)
 {
 	if (ft_strcmp(key, "NO") == 0)
-		assign_texture_by_key(game, &(game->texture_no), key, value);
+		assign_texture_by_key(game, &(game->texture_no), value);
 	else if (ft_strcmp(key, "SO") == 0)
-		assign_texture_by_key(game, &(game->texture_so), key, value);
+		assign_texture_by_key(game, &(game->texture_so), value);
 	else if (ft_strcmp(key, "WE") == 0)
-		assign_texture_by_key(game, &(game->texture_we), key, value);
+		assign_texture_by_key(game, &(game->texture_we), value);
 	else if (ft_strcmp(key, "EA") == 0)
-		assign_texture_by_key(game, &(game->texture_ea), key, value);
+		assign_texture_by_key(game, &(game->texture_ea), value);
 	else
 		ft_error(game, "strange identifier in texture lines");
 }

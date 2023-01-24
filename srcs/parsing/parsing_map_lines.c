@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:06:38 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 12:06:49 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:27:28 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static int	get_width(t_list *map_ll)
 	{
 		if (!ft_strchr(node->content, '\n'))
 		{
-			if (max_width < ft_strlen(node->content))
-				max_width = ft_strlen(node->content);
+			if (max_width < (int)ft_strlen(node->content))
+				max_width = (int)ft_strlen(node->content);
 		}
-		else if (max_width < ft_strlen(node->content) - 1)
-			max_width = ft_strlen(node->content) - 1;
+		else if (max_width < (int)ft_strlen(node->content) - 1)
+			max_width = (int)ft_strlen(node->content) - 1;
 		node = node->next;
 	}
 	return (max_width);
@@ -61,7 +61,6 @@ static char	**init_2d_arr(int height, int width)
 
 static void	linkedlist_to_arr(t_game *game, t_list **map_ll)
 {
-	char	**map_arr;
 	t_list	*node;
 	int		i;
 	int		j;

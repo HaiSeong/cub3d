@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:36:32 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 18:59:49 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:28:23 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	init_game_struct(&game, &img);
-	validate_arg(&game, argc, argv);
+	validate_arg(&game, argv);
 	parsing_cub_file(&game, argv[1]);
 	game.mlx = mlx_init();
 	set_texture_image(&game);
