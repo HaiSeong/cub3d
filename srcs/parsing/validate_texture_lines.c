@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:16:30 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 18:49:13 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:12:51 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	validate_texture_lines(t_game *game)
 	validate(game, game->texture_no);
 	validate(game, game->texture_so);
 	validate(game, game->texture_we);
-	validate(game, game->texture_ea);	
+	validate(game, game->texture_ea);
 }

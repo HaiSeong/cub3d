@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 14:12:27 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/21 20:05:52 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:05:59 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,8 @@ void	calculate_ray_values(t_game *game, t_ray *ray, int x)
 	ray->ray_dir_y = game->dir_y + game->plane_y * ray->camera_x;
 	ray->map_x = (int)game->pos_x;
 	ray->map_y = (int)game->pos_y;
-	// ray->delta_dist_x = 0;
 	if (ray->ray_dir_x != 0)
 		ray->delta_dist_x = fabs(1 / ray->ray_dir_x);
-	// ray->delta_dist_y = 0;
 	if (ray->ray_dir_y != 0)
 		ray->delta_dist_y = fabs(1 / ray->ray_dir_y);
 	ray->hit = 0;
