@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 18:48:24 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 18:49:10 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:06:24 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	xpm_file_to_image_texture(t_game *game)
 		game->texture_we, &w, &h);
 	game->img_ea.image = mlx_xpm_file_to_image(game->mlx, \
 		game->texture_ea, &w, &h);
+	if (game->img_no.image == NULL || game->img_so.image == NULL \
+		|| game->img_ea.image == NULL || game->img_we.image == NULL)
+		ft_error(game, "texture image has no value");
 }
 
 void	get_data_addr_texture(t_game *game)
