@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:14:17 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 18:54:47 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:53:06 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	ft_error(t_game *game, char *msg)
 	if (game->window != NULL)
 		mlx_destroy_window(game->mlx, game->window);
 	ft_printf("Error : %s\n", msg);
-	exit(0);
+	exit(1);
 }

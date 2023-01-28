@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/24 13:28:08 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/28 11:52:54 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define ON_CLICK		2
 # define ON_DESTROY		17
 
-# define SPEED			0.2
+# define SPEED			0.05
 
 # define WIN_WIDTH		1920
 # define WIN_HEIGHT		1080
