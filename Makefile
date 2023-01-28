@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+         #
+#    By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 14:40:32 by hajeong           #+#    #+#              #
-#    Updated: 2023/01/24 13:25:19 by jungchoi         ###   ########.fr        #
+#    Updated: 2023/01/28 20:58:13 by hajeong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L./mlx -lmlx -framework OpenGL -framework AppKit
 
 INCLUDES_DIR = includes

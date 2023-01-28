@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:33:13 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/24 13:28:34 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/28 20:59:17 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	calculate_line(t_game *game, t_ray *ray, t_img *texture_img)
 	ray->wall_x -= floor(ray->wall_x);
 	ray->texture_x = (int)(ray->wall_x * \
 		(double) texture_img->line_bytes / 4);
-	if (ray->side == 0 && ray->ray_dir_x > 0)
+	if (ray->side == 0 && ray->ray_dir_x < 0)
 		ray->texture_x = texture_img->line_bytes / 4 - ray->texture_x - 1;
-	if (ray->side == 1 && ray->ray_dir_y < 0)
+	if (ray->side == 1 && ray->ray_dir_y > 0)
 		ray->texture_x = texture_img->line_bytes / 4 - ray->texture_x - 1;
 	ray->line_height = (int)(WIN_HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = -1 * ray->line_height / 2 + WIN_HEIGHT / 2;
