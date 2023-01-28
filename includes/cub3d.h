@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:59:49 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/28 20:58:30 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/28 21:33:02 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,15 @@ void	parsing_cub_file(t_game *game, char *file);
 int		read_file(char *file);
 void	parsing_texture_lines(t_game *game, int fd);
 void	parsing_rgb_lines(t_game *game, int fd);
+void	assign_rgb(t_game *game, char *key, char *value);
+void	assign_rgb_by_key(t_game *game, int *field, \
+char *value);
 void	parsing_map_lines(t_game *game, int fd);
 void	validate_texture_lines(t_game *game);
+void	assign_texture(t_game *game, char *key, char *value);
+void	assign_texture_by_key(t_game *game, char **field, \
+char *value);
+void	ft_error_wrong_field_number(t_game *game, char **strs);
 void	validate_rgb_lines(t_game *game);
 void	validate_map(t_game *game);
 void	check_needless_lines(t_game *game, int fd);

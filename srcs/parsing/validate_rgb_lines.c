@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_rgb_lines.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:24:25 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 12:24:43 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/28 21:52:19 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,4 @@ void	validate_rgb_lines(t_game *game)
 	validate(game, game->c);
 	game->f_hex = arr_to_hex(game->f);
 	game->c_hex = arr_to_hex(game->c);
-	free(game->f);
-	free(game->c);
-	game->f = NULL;
-	game->c = NULL;
 }

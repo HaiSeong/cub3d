@@ -1,16 +1,17 @@
 
 
 
-NO ./resource/image/wall0.xpm
-SO ./resource/image/wall1.xpm
-WE ./resource/image/wall2.xpm
-EA ./resource/image/wall3.xpm
+NO ./resource/image/north_texture.xpm
+
+SO ./resource/image/south_texture.xpm
+WE ./resource/image/west_texture.xpm
+EA ./resource/image/east_texture.xpm
 
 F 93,173,236
 C 255,255,230
 
  111111
-1S000001
+1E000001
  111101
 1    1
 1

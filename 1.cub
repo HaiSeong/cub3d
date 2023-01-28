@@ -3,10 +3,11 @@
 NO ./resource/image/barrel.xpm
 SO ./resource/image/bluestone.xpm
 WE ./resource/image/colorstone.xpm
-EA ./resource/image/eagle.xpm
-
 
 F 120,120,120
+
+EA ./resource/image/eagle.xpm
+
 C 245,245,120
 
 
