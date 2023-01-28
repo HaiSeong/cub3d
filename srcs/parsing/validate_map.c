@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:10:27 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/21 12:32:39 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/28 22:23:13 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ static void	validate_column(t_game *game, int column)
 	while (i < game->map_height)
 	{
 		while (i < game->map_height && game->map[i][column] == ' ')
+		{
+			game->map[i][column] = '1';
 			i++;
+		}
 		if (i >= game->map_height)
 			break ;
 		if (game->map[i][column] != '1')

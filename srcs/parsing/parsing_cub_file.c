@@ -6,7 +6,7 @@
 /*   By: hajeong <hajeong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:56:58 by hajeong           #+#    #+#             */
-/*   Updated: 2023/01/28 22:04:16 by hajeong          ###   ########.fr       */
+/*   Updated: 2023/01/28 22:17:29 by hajeong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	parsing_cub_file(t_game *game, char *file)
 	validate_texture_lines(game);
 	validate_rgb_lines(game);
 	parsing_map_lines(game, fd);
-	check_needless_lines(game, fd);
 	validate_map(game);
+	check_needless_lines(game, fd);
 	close(fd);
 }
