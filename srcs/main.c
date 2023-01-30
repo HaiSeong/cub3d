@@ -6,7 +6,7 @@
 /*   By: jungchoi <jungchoi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 12:36:32 by jungchoi          #+#    #+#             */
-/*   Updated: 2023/01/24 13:28:23 by jungchoi         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:35:48 by jungchoi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ int	main(int argc, char *argv[])
 	mlx_hook(game.window, ON_CLICK, 0, press_key, &game);
 	mlx_hook(game.window, ON_DESTROY, 0, click_destroy, &game);
 	mlx_loop(game.mlx);
+	return (0);
 }
